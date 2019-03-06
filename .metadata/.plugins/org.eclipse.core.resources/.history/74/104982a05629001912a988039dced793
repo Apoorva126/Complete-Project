@@ -1,0 +1,107 @@
+package com.apoo.Config;
+
+import java.util.Properties;
+
+import javax.sql.DataSource;
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+/*
+@Configuration
+@EnableTransactionManagement
+@ComponentScan("com.apoo")
+public class HibernateConfig {
+	
+	@Bean(name="dataSource")
+	public DataSource getH2DataSource()
+	{
+		
+		//Create DataSource
+		DriverManagerDataSource dataSource=new DriverManagerDataSource();
+		
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/apoorva");
+		dataSource.setUsername("apoorva");
+		dataSource.setPassword("");
+		System.out.println("---DataSource Object is Created----");
+		return dataSource;
+		
+	}
+	//create session Factory with the help of hibernate
+	@Autowired
+	@Bean(name="sessionFactory")
+	public SessionFactory getSessionFactory()
+	{
+Properties hibernateProp=new Properties();
+		
+		hibernateProp.put("hibernate.hbm2ddl.auto","update");
+		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		
+		LocalSessionFactoryBuilder factory=new LocalSessionFactoryBuilder(getH2DataSource());
+		factory.addProperties(hibernateProp);
+		
+		factory.addAnnotatedClass(Category.class);
+		
+		System.out.println("---SessionFactory Object  Created ----");
+		
+		return factory.buildSessionFactory();
+			
+	}
+	//transaction
+	@Bean(name="txManager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
+	{
+		System.out.println("---Transaction Manager object Created--");
+		return new HibernateTransactionManager(sessionFactory);
+	}*/
+@Configuration
+@EnableTransactionManagement
+@ComponentScan({ "com.apoo" })
+
+public class HibernateConfig {
+
+		private final static String JDBC_URL = "jdbc:h2:tcp://localhost/~/apoorva";
+		private final static String JDBC_DRIVER_CLASS = "org.h2.Driver";		
+		private final static String JDBC_USERNAME = "apoorva";
+		private final static String JDBC_PASSWORD = "";
+		
+	
+	    @Bean
+	    public SessionFactory sessionFactory(DataSource dataSource) {
+	        LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);	        
+	        builder.addProperties(hibernateProperties());
+	        builder.scanPackages("com.apoo");
+	        return builder.buildSessionFactory();
+	     }
+	     
+	    @Bean
+	    public DataSource dataSource() {
+	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	        dataSource.setDriverClassName(JDBC_DRIVER_CLASS);
+	        dataSource.setUrl(JDBC_URL);
+	        dataSource.setUsername(JDBC_USERNAME);	        
+	        dataSource.setPassword(JDBC_PASSWORD);
+	        return dataSource;
+	    }
+	     
+	    private Properties hibernateProperties() {
+	        Properties properties = new Properties();
+	        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect"); 
+	        properties.put("hibernate.show_sql", "true");
+	        properties.put("hibernate.format_sql", "true");
+	        properties.put("hibernate.hbm2ddl.auto", "update");
+	        return properties;        
+	    }
+	     
+	    @Bean
+	    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+	       HibernateTransactionManager txManager = new HibernateTransactionManager();
+	       txManager.setSessionFactory(sessionFactory);
+	       return txManager;
+	    }
+}

@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html"%>
+<%@include file="Header.jsp"%>
+
+<form action="AddProduct"method="post">
+<table align="center" class="table">
+<tr>
+<td colspan="2">
+<center><h1>Product</h1></center>
+</td>
+</tr>
+<tr>
+<td>Category Name</td>
+<td><input type="text" name="proName"/></td>
+</tr>
+<tr>
+<td>Category Desc</td>
+<td><input type="text" name="proDesc"/></td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+<input type="submit" value="Add Product"/></td>
+</center>
+</tr>
+
+
+
+
+</table>
+</body>
+</html>

@@ -1,0 +1,19 @@
+package com.apoo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.apoo.model.Product;
+
+@Controller
+public class ProductController {
+
+	@RequestMapping("/product")
+	public ModelAndView Productpage(){
+		ModelAndView andView = new ModelAndView("product");
+		Product product = new Product();
+        andView.addObject("product", product);
+		return andView;
+	}
+}

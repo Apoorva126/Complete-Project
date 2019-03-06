@@ -1,0 +1,35 @@
+package com.apoo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.apoo.dao.CategoryDAO;
+import com.apoo.dao.ProductDAO;
+import com.apoo.model.Category;
+import com.apoo.model.Product;
+
+@Controller
+public class ProductController {
+	@Autowired
+	ProductDAO productdao;
+	
+	@RequestMapping("/product")
+	public ModelAndView Productpage(){
+		ModelAndView andView = new ModelAndView("product");
+		Product product = new Product();
+        andView.addObject("product", product);
+		return andView;
+	}
+	@RequestMapping(value="/AddCategory",method=RequestMethod.POST)
+public String AddProduct(@ModelAttribute("product") Product product)
+		{
+    System.out.println("hii");
+	categoryDAO.addingCategory(product); 
+    return "category";
+		}
+
+}

@@ -1,0 +1,36 @@
+package com.apoo.controller;
+
+@Controller
+public class CategoryController {
+
+	@Autowired
+	CategoryDAO categoryDAO;
+	
+	@RequestMapping("/Category")
+public ModelAndView showCategory()
+		{
+		ModelAndView m = new ModelAndView();
+		List<Category> listCategories =categoryDAO.listCategories();
+	/*m.addAttribute("listCategories", listCategories);
+		m.addAttribute("pageinfo", "Manage Category ");
+return "Category";*/
+		m.addObject("listCategories", listCategories);
+		m.setViewName("Category");
+		return m;
+		
+		}
+
+@PostMapping(value="/addCategory")
+public String addCategory(Model m, @RequestParam("catName")String CategoryName,@RequestParam("catDesc")String CategoryDesc)
+		{
+	Category category=new Category();
+	category.setCategoryName(CategoryName);
+	category.setCategoryDesc(CategoryDesc);
+	categoryDAO.addCategory(category); 
+	List<Category>listCategories=categoryDAO.listCategories();
+	m.addAttribute("listCategories", listCategories);
+	
+	
+	m.addAttribute("pageinfo", "Manage Category ");
+return "Category";
+		}

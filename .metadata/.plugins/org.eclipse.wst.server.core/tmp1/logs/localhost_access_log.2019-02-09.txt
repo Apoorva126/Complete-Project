@@ -1,0 +1,15 @@
+127.0.0.1 - - [09/Feb/2019:15:57:37 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:15:57:41 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 200 1439
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:15:57:43 +0530] "GET /BaazarIndiaFrontEnd/main.css HTTP/1.1" 404 992
+127.0.0.1 - - [09/Feb/2019:16:04:32 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:04:33 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 200 1439
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:04:34 +0530] "GET /BaazarIndiaFrontEnd/main.css HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:04:51 +0530] "GET /BaazarIndiaFrontEnd/register HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:04:55 +0530] "GET /BaazarIndiaFrontEnd/main.css HTTP/1.1" 404 992
+127.0.0.1 - - [09/Feb/2019:16:34:51 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:34:55 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 500 3169
+127.0.0.1 - - [09/Feb/2019:16:37:26 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:37:28 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 500 3169
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:39:03 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 500 3169
+127.0.0.1 - - [09/Feb/2019:16:43:01 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:16:43:03 +0530] "GET /BaazarIndiaFrontEnd/ HTTP/1.1" 500 3169
